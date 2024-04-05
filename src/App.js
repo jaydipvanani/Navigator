@@ -1,25 +1,48 @@
-import logo from './logo.svg';
+
+
 import './App.css';
+import Navbar from './componant/header/Navbar';
+import About from './componant/pages/About';
+import Blog from './componant/pages/Blog';
+import Contact from './componant/pages/Contact';
+import Home from './componant/pages/Home';
+import { Route, Routes } from 'react-router-dom';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  let role = "user"
+  if (role == "admin") {
+    return (
+      <>
+        <Navbar />
+
+        <Routes>
+          <Route path='/' exact element={<Home />} />
+          <Route path='/about' exact element={<About />} />
+          <Route path='/contact' exact element={<Contact />} />
+          <Route path='/blog' exact element={<Blog />} />
+        </Routes>
+
+      </>
+    )
+  }
+  else if (role == "user") {
+    return (
+      <>
+
+        <Navbar />
+        <Routes>
+          <Route path='/' exact element={<Home />} />
+          <Route path='/about' exact element={<About />} />
+          <Route path='/contact' exact element={<Contact />} />
+          <Route path='/blog' exact element={<Blog />} />
+        </Routes>
+      </>
+
+    )
+
+
+  }
 }
 
 export default App;
